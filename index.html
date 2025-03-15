@@ -20,7 +20,7 @@
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        input, textarea {
+        input, textarea, select {
             width: 100%;
             padding: 10px;
             margin: 10px 0;
@@ -39,6 +39,17 @@
             background-color: #0056b3;
         }
     </style>
+    <script>
+        function toggleKerichoOptions() {
+            var location = document.getElementById("location").value;
+            var kerichoOptions = document.getElementById("kericho-options");
+            if (location === "Kericho") {
+                kerichoOptions.style.display = "block";
+            } else {
+                kerichoOptions.style.display = "none";
+            }
+        }
+    </script>
 </head>
 <body>
     <div class="container">
@@ -48,6 +59,19 @@
             <input type="text" name="name" placeholder="Your Name" required>
             <input type="email" name="email" placeholder="Your Email" required>
             <input type="tel" name="phone" placeholder="Your Phone Number" required>
+            <select name="location" id="location" onchange="toggleKerichoOptions()" required>
+                <option value="">Select Location</option>
+                <option value="Eldoret">Eldoret</option>
+                <option value="Kericho">Kericho</option>
+            </select>
+            <div id="kericho-options" style="display: none;">
+                <select name="kericho_sub_station">
+                    <option value="">Select Sub-Station</option>
+                    <option value="Kabianga">Kabianga</option>
+                    <option value="Kipchimchim">Kipchimchim</option>
+                    <option value="Brook">Brook</option>
+                </select>
+            </div>
             <textarea name="suggestion" placeholder="Your Suggestion" rows="5" required></textarea>
             <button type="submit">Submit</button>
         </form>
